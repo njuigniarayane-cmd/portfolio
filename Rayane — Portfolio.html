@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<!-- saved from url=(0098)file:///C:/Users/Genie%20Store/AppData/Local/Microsoft/Windows/INetCache/IE/4J9LVOUN/index[2].html -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rayane — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0e0f;
+      --surface: #141819;
+      --card: #1c2022;
+      --border: #2a3035;
+      --accent: #d4a847;
+      --accent2: #4caf82;
+      --text: #e8e2d9;
+      --muted: #7a8690;
+      --glow: rgba(212, 168, 71, 0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 3rem;
+      background: rgba(11,14,15,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    #accueil {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 8rem 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 40%, rgba(212,168,71,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(76,175,130,0.05) 0%, transparent 60%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+    }
+
+    .hero-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 32px; height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 span { color: var(--accent); }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 4px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.25s;
+      cursor: pointer; border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0b0e0f;
+    }
+
+    .btn-primary:hover { background: #e8bb55; transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-visual {
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+
+    .avatar-frame {
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      padding: 3px;
+      position: relative;
+    }
+
+    .avatar-inner {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      background: var(--card);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 5rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.05em;
+    }
+
+    .floating-badge {
+      position: absolute;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.6rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      white-space: nowrap;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+
+    .badge-1 { bottom: 30px; left: -30px; }
+    .badge-2 { top: 40px; right: -20px; }
+
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent2); }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 6rem 3rem; }
+
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── À PROPOS ── */
+    #apropos { background: var(--surface); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+      font-size: 0.98rem;
+    }
+
+    .about-text p strong { color: var(--text); font-weight: 500; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .skill-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem;
+      transition: border-color 0.2s;
+    }
+
+    .skill-item:hover { border-color: var(--accent); }
+
+    .skill-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
+
+    .skill-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .skill-desc { font-size: 0.78rem; color: var(--muted); }
+
+    /* ── PROJETS ── */
+    #projets { background: var(--bg); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px var(--glow);
+    }
+
+    .project-thumb {
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thumb-1 { background: linear-gradient(135deg, #1a2a1e, #0f1f15); }
+    .thumb-2 { background: linear-gradient(135deg, #2a1a10, #1f0f05); }
+    .thumb-3 { background: linear-gradient(135deg, #1a1a2a, #0f0f1f); }
+
+    .project-body { padding: 1.5rem; }
+
+    .project-tags {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+      background: rgba(212,168,71,0.12);
+      color: var(--accent);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .tag.green {
+      background: rgba(76,175,130,0.12);
+      color: var(--accent2);
+    }
+
+    .project-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--surface); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    input, textarea {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.85rem 1rem;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      width: 100%;
+      transition: border-color 0.2s;
+      resize: none;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    textarea { height: 140px; }
+
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .info-item {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.2rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .info-icon { font-size: 1.4rem; }
+
+    .info-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.2rem; }
+    .info-value { font-size: 0.95rem; color: var(--text); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 2rem 3rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      color: var(--accent);
+      font-size: 1rem;
+    }
+
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 1rem 0 3rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      #accueil { padding: 6rem 1.5rem 3rem; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="file:///C:/Users/Genie%20Store/AppData/Local/Microsoft/Windows/INetCache/IE/4J9LVOUN/index[2].html#accueil" class="nav-logo">N.R</a>
+    <ul class="nav-links">
+      <li><a href="file:///C:/Users/Genie%20Store/AppData/Local/Microsoft/Windows/INetCache/IE/4J9LVOUN/index[2].html#accueil">Accueil</a></li>
+      <li><a href="file:///C:/Users/Genie%20Store/AppData/Local/Microsoft/Windows/INetCache/IE/4J9LVOUN/index[2].html#apropos">À Propos</a></li>
+      <li><a href="file:///C:/Users/Genie%20Store/AppData/Local/Microsoft/Windows/INetCache/IE/4J9LVOUN/index[2].html#projets">Projets</a></li>
+      <li><a href="file:///C:/Users/Genie%20Store/AppData/Local/Microsoft/Windows/INetCache/IE/4J9LVOUN/index[2].html#contact">Contact</a></li>
+    </ul>
+    <a href="file:///C:/Users/Genie%20Store/AppData/Local/Microsoft/Windows/INetCache/IE/4J9LVOUN/index[2].html#contact" class="btn btn-primary" style="font-size:0.8rem; padding:0.55rem 1.2rem;">Me contacter</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="accueil">
+    <div class="hero-bg"></div>
+    <div class="hero-grid">
+      <div class="hero-left fade-in visible">
+        <div class="hero-tag">Disponible pour des projets</div>
+        <h1>Je suis <span>Njuignia Rayane</span>,<br>Développeur Web &amp; Designer</h1>
+        <p class="hero-desc">
+          Étudiant passionné par la création d'interfaces web modernes et l'expérience utilisateur.
+          Je conçois et développe des produits numériques accessibles et performants.
+        </p>
+        <div class="btn-group">
+          <a href="file:///C:/Users/Genie%20Store/AppData/Local/Microsoft/Windows/INetCache/IE/4J9LVOUN/index[2].html#projets" class="btn btn-primary">Voir mes projets →</a>
+          <a href="file:///C:/Users/Genie%20Store/AppData/Local/Microsoft/Windows/INetCache/IE/4J9LVOUN/index[2].html#contact" class="btn btn-outline">Me contacter</a>
+        </div>
+      </div>
+      <div class="hero-visual fade-in delay-2">
+        <div class="avatar-frame">
+          <div class="avatar-inner">NR</div>
+        </div>
+        <div class="floating-badge badge-1">
+          <div class="dot"></div>
+          <span>Disponible maintenant</span>
+        </div>
+        <div class="floating-badge badge-2">
+          📍 Cameroun
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section id="apropos">
+    <div class="section-inner">
+      <p class="section-label">Qui suis-je ?</p>
+      <h2>À Propos de Moi</h2>
+      <div class="divider"></div>
+      <div class="about-grid">
+        <div class="about-text fade-in">
+          <p>
+            Je suis <strong>étudiant en Génie Informatique</strong> au Cameroun, passionné par le développement web et le design d'interfaces. Mon objectif est de créer des expériences numériques qui allient esthétique et fonctionnalité.
+          </p>
+          <p>
+            Avec une solide formation en <strong>HTML, CSS, JavaScript</strong> et des outils comme <strong>Figma</strong> pour le prototypage, je travaille à maîtriser l'ensemble de la chaîne de création — du concept à la mise en production.
+          </p>
+          <p>
+            Je suis également intéressé par l'<strong>ingénierie logicielle</strong> et les systèmes embarqués, avec une curiosité pour la robotique et l'intelligence artificielle.
+          </p>
+          <br>
+          <a href="file:///C:/Users/Genie%20Store/AppData/Local/Microsoft/Windows/INetCache/IE/4J9LVOUN/index[2].html#contact" class="btn btn-outline">Travaillons ensemble</a>
+        </div>
+        <div class="skills-grid fade-in delay-2">
+          <div class="skill-item">
+            <div class="skill-icon">🖥️</div>
+            <div class="skill-name">HTML / CSS</div>
+            <div class="skill-desc">Intégration web responsive &amp; moderne</div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">⚡</div>
+            <div class="skill-name">JavaScript</div>
+            <div class="skill-desc">Interactivité &amp; logique front-end</div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">🎨</div>
+            <div class="skill-name">Figma</div>
+            <div class="skill-desc">Prototypage &amp; design d'interfaces</div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">🚀</div>
+            <div class="skill-name">Vercel / Git</div>
+            <div class="skill-desc">Déploiement &amp; versionnage</div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">🐍</div>
+            <div class="skill-name">Python</div>
+            <div class="skill-desc">Scripts, automatisation, data</div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">📱</div>
+            <div class="skill-name">UX/UI Design</div>
+            <div class="skill-desc">Wireframes, user flows, maquettes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETS -->
+  <section id="projets">
+    <div class="section-inner">
+      <p class="section-label">Ce que j'ai réalisé</p>
+      <h2>Mes Projets</h2>
+      <p class="section-sub">Voici quelques projets réalisés dans le cadre de mes études et de ma formation personnelle.</p>
+      <div class="divider"></div>
+      <div class="projects-grid">
+
+        <div class="project-card fade-in delay-1">
+          <div class="project-thumb thumb-2">🌐</div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="tag">React</span>
+              <span class="tag green">UX/UI</span>
+            </div>
+            <div class="project-title">Portfolio Personnel</div>
+            <p class="project-desc">Ce portfolio — conçu sous Figma et développé en HTML/CSS/JS, hébergé sur Vercel avec une approche mobile-first.</p>
+          </div>
+        </div>
+
+        <div class="project-card fade-in delay-2">
+          <div class="project-thumb thumb-3">📐</div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="tag">HTML</span>
+              <span class="tag green">SVG</span>
+            </div>
+            <div class="project-title">Page Géométrie Interactive</div>
+            <p class="project-desc">Interface pédagogique couvrant angles, triangles et quadrilatères avec diagrammes SVG animés et quiz intégrés.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label">Restons en contact</p>
+      <h2>Me Contacter</h2>
+      <p class="section-sub">Une idée de projet, une opportunité de collaboration ? N'hésitez pas à me laisser un message.</p>
+      <div class="divider"></div>
+      <div class="contact-grid">
+        <div class="contact-form fade-in">
+          <div class="form-group">
+            <label>Votre nom</label>
+            <input type="text" placeholder="Jean Dupont">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="email@exemple.com">
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Décrivez votre projet ou votre demande…"></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="alert(&#39;Message envoyé ! Je vous répondrai bientôt.&#39;)">Envoyer le message →</button>
+        </div>
+        <div class="contact-info fade-in delay-2">
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div>
+              <div class="info-label">Localisation</div>
+              <div class="info-value">Cameroun, Afrique Centrale</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div>
+              <div class="info-label">Téléphone</div>
+              <div class="info-value">+237 679 096 132</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Njuignia Rayane.</div>
+    <div class="footer-copy">© 2026 — Conçu &amp; développé avec ❤️ au Cameroun</div>
+  </footer>
+
+  <script>
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Active nav
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current ? '#e8e2d9' : '';
+      });
+    });
+  </script>
+
+
+</body></html>
